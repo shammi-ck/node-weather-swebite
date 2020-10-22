@@ -4,11 +4,11 @@ const hbs = require('hbs');
 const request = require('request');
 const geocode = require ('./utils/geocode_reuse');
 const forecast = require('./utils/weatherstack_reuse');
-const { response } = require('express');
-const { getPriority } = require('os');
 
-const app = express()
-//Defien paths for express config
+
+const app = express();
+const port = process.env.PORT || 3000;
+//Define paths for express config
 const staticPath = path.join(__dirname,'../public')
 const viewsPath = path.join(__dirname,'../templates/views')
 const partialsPath = path.join(__dirname,'../templates/partials')
@@ -100,7 +100,9 @@ app.get('*',(req,res)=>{
     });
 })
 //starting the server
-app.listen(3000,()=>{
-    console.log('Server is up on port 3000');
+// app.listen(3000,()=>{
+//     console.log('Server is up on port 3000');
+// });
+app.listen(port,()=>{
+    console.log('Server is up on port '+port);
 });
-
